@@ -1,0 +1,42 @@
+
+<div class="row">
+    <div *ngFor="let card of cards" style="padding-left: 10px;">
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{card.header}}</div>
+            <div class="card-body">
+              <h5 class="card-title">{{card.title}}</h5>
+              <p class="card-text">{{card.text}}.</p>
+            </div>
+          </div>
+      </div>
+</div>
+ <div class="row">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{card.header}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{card.title}}</h5>
+          <p class="card-text">{{card.text}}.</p>
+        </div>
+      </div>
+ </div>
+ <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Matricula</th>
+        <th scope="col">Serie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let aluno of alunos; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{aluno.name}}</td>
+        <td>{{aluno.matricula}}</td>
+        <td>{{aluno.serie}}</td>
+        <td><button type="button" (click)="removeAluno(i)" class="btn btn-danger">excluir</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+  <button type="button" (click)="addAluno()" class="btn btn-primary">Adicionar</button>
