@@ -1,0 +1,80 @@
+<h1>Home Page</h1>
+
+<form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nome Aluno:</label>
+      <input type="text" class="form-control" id="aluno" name="aluno" [(ngModel)]="aluno.name" aria-describedby="emailHelp" placeholder="Aluno">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Matricula:</label>
+      <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Matricula" [(ngModel)]="aluno.matricula">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Serie:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" name="serie" placeholder="1ª Ano" [(ngModel)]="aluno.serie">
+      </div>
+    <button type="button" (click)="addAluno()" class="btn btn-primary">Submit</button>
+  </form>
+  <br>
+  <div style="max-width: 100%; overflow-y:auto;">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Aluno</th>
+            <th scope="col">Matricula</th>
+            <th scope="col">Serie</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aluno of alunos; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{aluno.name}}</td>
+                <td>{{aluno.matricula}}</td>
+                <td>{{aluno.serie}}</td>
+                <td>
+                    <button type="button" (click)="removeAluno(i)" class="btn btn-danger">excluir</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modal-' + i">
+                        Editar
+                      </button>
+                </td>
+                <div class="modal fade" id="modal-{{i}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Nome Aluno:</label>
+                                  <input type="text" class="form-control" id="aluno" name="aluno" [(ngModel)]="aluno.name" aria-describedby="emailHelp" placeholder="Aluno">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">Matricula:</label>
+                                  <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Matricula" [(ngModel)]="aluno.matricula">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Serie:</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" name="serie" placeholder="1ª Ano" [(ngModel)]="aluno.serie">
+                                  </div>
+                                <button type="button" (click)="refreshAlunos()" class="btn btn-primary">Submit</button>
+                              </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary"  data-dismiss="modal">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </tr>
+           </tbody>
+      </table>
+          
+  </div>
+  
